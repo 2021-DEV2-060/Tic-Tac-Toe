@@ -1,8 +1,7 @@
 package com.example.tictactoe.play
 
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.content.Context
+import android.os.*
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -18,11 +17,14 @@ import com.example.tictactoe.other.showToast
 class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPlaygroundBinding
     private lateinit var viewModel: PlaygroundViewModel
+    private lateinit var vibrator: Vibrator
+    private var vibrateTime = 10L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlaygroundBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return PlaygroundViewModel(
@@ -38,7 +40,7 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setData() {
-        if (Symbol.X == intent.getStringExtra(PLAYER_ONE_SYMBOL)) {
+        if (Symbol.O == intent.getStringExtra(PLAYER_ONE_SYMBOL)) {
             binding.tvPlayerOneSymbol.setHTMLText(getString(R.string.player_one_o))
             binding.tvPlayerTwoSymbol.setHTMLText(getString(R.string.player_two_x))
         } else {
@@ -51,6 +53,7 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.msg.observe(this,
             { t -> t?.let { binding.tvMsg.text = it } })
         viewModel.playerWon.observe(this, { t ->
+          vibrateTime = 100
             when (t) {
                 1 -> {
                     showToast(getString(R.string.player_1_won))
@@ -62,6 +65,7 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
                     showToast(getString(R.string.game_draw))
                 }
             }
+            vibrate()
             Handler(Looper.getMainLooper()).postDelayed({ finish() }, FINISH_TIME)
         })
         viewModel.machineStep.observe(this, { t ->
@@ -90,6 +94,7 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addInput(view: TextView, position: Int) {
+        vibrate()
         view.isClickable = false
         if (viewModel.isPlayerOne) {
             view.addNextStep(viewModel.playerOneSymbol)
@@ -110,6 +115,14 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
             7 -> binding.tvSeven
             8 -> binding.tvEight
             else -> binding.tvNine
+        }
+    }
+
+    private fun vibrate() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(vibrateTime, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(vibrateTime)
         }
     }
 
