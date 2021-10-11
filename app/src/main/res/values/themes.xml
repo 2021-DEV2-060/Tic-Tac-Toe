@@ -1,0 +1,61 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TicTacToe" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Border">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="Border.Horizontal">
+        <item name="android:layout_height">5dp</item>
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+    <style name="Border.Vertical">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">@dimen/zero_dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="xoStyle" >
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">45sp</item>
+    </style>
+
+    <style name="radioButton">
+        <item name="android:textSize">@dimen/twenty_two_sp</item>
+        <item name="android:checked">false</item>
+    </style>
+
+    <style name="symbolText">
+        <item name="android:textSize">@dimen/twenty_two_sp</item>
+    </style>
+
+    <style name="symbolText2">
+        <item name="android:textSize">@dimen/twenty_two_sp</item>
+    </style>
+</resources>
