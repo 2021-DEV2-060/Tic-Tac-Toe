@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <color android:color="@color/purple_500" />
+        <color android:color="@color/white" />
     </item>
 
     <item
@@ -9,6 +9,6 @@
         android:height="@dimen/hundred_dp"
         android:gravity="center">
 
-        <bitmap android:src="@drawable/ic_xo" />
+        <bitmap android:src="@drawable/ic_launcher_x" />
     </item>
 </layer-list>

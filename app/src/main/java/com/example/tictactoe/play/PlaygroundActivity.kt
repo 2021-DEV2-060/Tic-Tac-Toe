@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.other.Symbol
 import com.example.tictactoe.databinding.ActivityPlaygroundBinding
+import com.example.tictactoe.other.addNextStep
 import com.example.tictactoe.other.showToast
 
 class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
@@ -89,9 +90,9 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
     private fun addInput(view: TextView, position: Int) {
         view.isClickable = false
         if (viewModel.isPlayerOne) {
-            view.text = viewModel.playerOneSymbol
+            view.addNextStep(viewModel.playerOneSymbol)
         } else {
-            view.text = viewModel.playerTwoSymbol
+            view.addNextStep(viewModel.playerTwoSymbol)
         }
         viewModel.addInput(position)
     }
