@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.tictactoe.R
 import com.example.tictactoe.other.Symbol
 import com.example.tictactoe.databinding.ActivityMainBinding
+import com.example.tictactoe.other.setHTMLText
 import com.example.tictactoe.play.PlaygroundActivity
 
 class MainActivity : AppCompatActivity() {
@@ -42,11 +43,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun toggle() {
         if (playerOneSymbolX) {
-            binding.tvPlayerOneSymbol.text = getString(R.string.player_one_o)
-            binding.tvPlayerTwoSymbol.text = getString(R.string.player_two_x)
+            binding.tvPlayerOneSymbol.setHTMLText(getString(R.string.player_one_o))
+            binding.tvPlayerTwoSymbol.setHTMLText(getString(R.string.player_two_x))
         } else {
-            binding.tvPlayerOneSymbol.text = getString(R.string.player_one_x)
-            binding.tvPlayerTwoSymbol.text = getString(R.string.player_two_o)
+            binding.tvPlayerOneSymbol.setHTMLText(getString(R.string.player_one_x))
+            binding.tvPlayerTwoSymbol.setHTMLText(getString(R.string.player_two_o))
         }
         playerOneSymbolX = !playerOneSymbolX
     }
