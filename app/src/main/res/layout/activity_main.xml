@@ -17,7 +17,6 @@
         android:text="@string/app_name"
         android:textSize="45sp"
         android:textStyle="bold|italic"
-        app:drawableStartCompact="@mipmap/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -12,6 +12,7 @@ import com.example.tictactoe.R
 import com.example.tictactoe.other.Symbol
 import com.example.tictactoe.databinding.ActivityPlaygroundBinding
 import com.example.tictactoe.other.addNextStep
+import com.example.tictactoe.other.setHTMLText
 import com.example.tictactoe.other.showToast
 
 class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
@@ -38,10 +39,11 @@ class PlaygroundActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setData() {
         if (Symbol.X == intent.getStringExtra(PLAYER_ONE_SYMBOL)) {
-            binding.tvPlayerOneSymbol.text = getString(R.string.player_one_o)
-            binding.tvPlayerTwoSymbol.text = getString(R.string.player_two_x)
+            binding.tvPlayerOneSymbol.setHTMLText(getString(R.string.player_one_o))
+            binding.tvPlayerTwoSymbol.setHTMLText(getString(R.string.player_two_x))
         } else {
-            binding.tvPlayerOneSymbol.text = getString(R.string.player_one_x)
+            binding.tvPlayerOneSymbol.setHTMLText(getString(R.string.player_one_x))
+            binding.tvPlayerTwoSymbol.setHTMLText(getString(R.string.player_two_o))
         }
     }
 
